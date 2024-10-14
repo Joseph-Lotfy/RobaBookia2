@@ -298,7 +298,8 @@ document.querySelectorAll('input[name=category]').forEach((input) => {
         if(!bookFound){
             if(!document.getElementById('noBook')){
                 let noBooks = document.createElement('div');
-                noBooks.innerHTML = "<img src = 'images/sign-159285_1280.png' width='200px'><h2 id='noBook'>No Book Has Been Found</h2>";
+                noBooks.innerHTML = "<img src = 'images/sign-159285_1280.png' width='200px'><h2>No Book Has Been Found</h2>";
+                noBooks.id = 'noBook';
                 noBooks.classList.add('noBookFound')
                 document.getElementById('cards-container').append(noBooks)
             }

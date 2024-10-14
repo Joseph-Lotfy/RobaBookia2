@@ -50,7 +50,7 @@ function showLoader() {
 function hideLoader() {
     document.getElementById('loader').style.display = 'none'; // Hide the loader
 }
-
+let publisher = ['Penguin Random House', 'Hachette', 'HarperCollins']
 /*---------Constructing Books-------------*/
 function displayBookCovers(books, details) {
     const container = document.getElementById('cards-container');
@@ -62,12 +62,14 @@ function displayBookCovers(books, details) {
         const author = volumeInfo.authors ? volumeInfo.authors.join(', ') : 'Unknown Author';
         const descriptionText = details[index].description || 'No description available';
         const genres = details[index].categories ? details[index].categories : 'No genre available';
+        const publisher = details[index].publisher ? details[index].publisher : 'No publisher available';
         console.log(genres)
         const cleanedDescription = cleanDescription(descriptionText);
         const randomNumber = Math.floor(Math.random() * 1000); // Generate random price
+        const randomNumber2 = Math.floor(Math.random() * 2); // Generate random price
         console.log(cleanedDescription)
         container.innerHTML += `
-            <div class="card haveHover" data-genre="${genres}">
+            <div class="card haveHover" data-genre="${genres} ${publisher}">
               <div class="card-img">
                <img class="bookImg" src="${coverUrl}" alt="Book Cover">
               </div>
@@ -314,16 +316,19 @@ function getBookDetails(bookId) {
         .then(data => {
             const description = data.volumeInfo.description || 'No description available';
             const categories = data.volumeInfo.categories ? data.volumeInfo.categories : 'No genre available';
+            const publisher = data.volumeInfo.publisher || 'No publisher available'; // Access the publisher here
             return {
                 description: description,
-                categories: categories
+                categories: categories,
+                publisher: publisher // Return the publisher
             };
         })
         .catch(error => {
             console.error('Error fetching book details:', error);
             return {
                 description: 'No description available',
-                categories: 'No genre available'
+                categories: 'No genre available',
+                publisher: 'No publisher available' // Handle errors with default values
             };
         });
 }
@@ -373,6 +378,38 @@ document.querySelectorAll('.genre').forEach((button) => {
             noItemsMessage.id = 'no-items-message'; 
             noItemsMessage.textContent = 'No items available for this genre.';
             document.getElementById('cards-container').appendChild(noItemsMessage);
+        }
+    });
+});
+document.querySelectorAll('input[name=category]').forEach((input) => {
+    input.addEventListener('click', (e) => {
+        let genres = Array.from(document.querySelectorAll('input[name=category]:checked')).map(inp => inp.value.toLowerCase().trim());
+
+        let bookFound = false; // To track if any book is still visible
+
+        document.querySelectorAll('.card').forEach((book) => {
+            // Normalize the book's data-genre attribute, split by commas and trim spaces
+            let bookGenres = book.dataset.genre.toLowerCase().split(',').map(genre => genre.trim());
+
+            // Check if the book contains all selected genres
+            if (genres.every(genre => bookGenres.some(bookGenre => bookGenre.includes(genre)))) {
+                book.style.display = ''; // Show the book
+                bookFound = true; // A book is visible
+            } else {
+                book.style.display = 'none'; // Hide the book
+            }
+        });
+        if(!bookFound){
+            if(!document.getElementById('noBook')){
+                let noBooks = document.createElement('div');
+                noBooks.innerHTML = "<img src = 'images/sign-159285_1280.png' width='200px'><h2>No Book Has Been Found</h2>";
+                noBooks.id = 'noBook';
+                noBooks.classList.add('noBookFound')
+                document.getElementById('cards-container').append(noBooks)
+            }
+        }
+        else{
+            if(document.getElementById('noBook'))document.getElementById('noBook').remove()
         }
     });
 });

@@ -74,133 +74,115 @@
                   <div class="filter-section2">                 
                     <!-- Categories -->
                     <div class="filter-group">
-                      <label>الأقسام</label>
-                      <input type="text" placeholder="ابحث عن الأقسام" id="search-categories">
-                      <div class="checkbox-group">
-                        <input type="checkbox" id="category2" name="category" value="fantasy">
-                        <label for="category2">خيال</label><br>
-                        <input type="checkbox" id="category3" name="category" value="adventure">
-                        <label for="category3">مغامرات</label><br>
-                        <input type="checkbox" id="category4" name="category" value="religion">
-                        <label for="category3">كتب دينية</label><br>
-                        <input type="checkbox" id="category5" name="category" value="classics">
-                        <label for="category3">كلاسكيات</label><br>
-                        <input type="checkbox" id="category6" name="category" value="romance">
-                        <label for="category3">رومانسى</label><br>
-                      </div><br>
-                    <div class="filter-group">
-                        <label class="sort" for="sort">عرض المزيد</label>
-                        <select id="sort">
-                          <option value="latest">تارخ</option>
-                          <option value="oldest">فن</option>
-                          <option value="popular">رويات رومانسيه</option>
-                          <option value="latest">ادب</option>
-                          <option value="oldest">فانتازيا</option>
-                          <option value="popular">رويات بوليسيه</option>
-                          <option value="latest">كتب اطفال</option>
-                          <option value="oldest">مذكرات</option>
-                          <option value="popular">رويات خياليه</option>
-                          <option value="latest">سيره ذاتيه</option>
-                          <option value="oldest">دول وقارات</option>
-                          <option value="popular">تاريخ معاصر</option>
-                          <option value="popular">كتب دينيه</option>
-                        </select>
-                    </div>
-                    </div>
-                    <!-- Publishers -->
-                    <div class="filter-group">
-                      <label>دور النشر</label>
-                      <input type="text" placeholder="ابحث عن دور النشر" id="search-publishers">
-                      <div class="checkbox-group">
-                        <input type="checkbox" id="publisher1" name="publisher" value="juice-books">
-                        <label for="publisher1">عصير الكتب للترجمة والنشر (702)</label>
-                        <br>
-                        <input type="checkbox" id="publisher2" name="publisher" value="kalemat-publishing">
-                        <label for="publisher2">كلمات للنشر والتوزيع (350)</label>
-                        <br>
-                        <input type="checkbox" id="publisher3" name="publisher" value="bint-azayt">
-                        <label for="publisher3">بنت الزيات (180)</label>
+                      <h4 >ترتيب حسب</h4>
+                      <select id="sort">
+                          <option value="latest">الأحدث</option>
+                          <option value="oldest">الأقدم</option>
+                          <option value="popular">الأكثر شعبية</option>
+                      </select>
                       </div>
+                      <hr>
+              
+                  <!-- Categories -->
+                  <div class="filter-group">
+                    <h4>الأقسام</h4>
+                    <input type="text" placeholder="ابحث عن الأقسام" id="search-categories">
+                    <div class="checkbox-group">
+                      <label for="category2">خيال</label>
+                      <input type="checkbox" id="category2" name="category" value="fantasy"><br>
+                      <label for="category3">مغامرات</label>
+                      <input type="checkbox" id="category3" name="category" value="adventure"><br>
+                      <label for="category3">كتب دينية</label>
+                      <input type="checkbox" id="category4" name="category" value="religion"><br>
+                      <label for="category3">كلاسكيات</label>
+                      <input type="checkbox" id="category5" name="category" value="classics"><br>
+                      <label for="category3">رومانسى</label>
+                      <input type="checkbox" id="category6" name="category" value="romance"><br>
                     </div>
-                        </div>
-                </div>
+                  </div>
+                  <hr>
+              
+                  <!-- Publishers -->
+                  <div class="filter-group">
+                    <label>دور النشر</label>
+                    <input type="text" placeholder="ابحث عن الأقسام" id="search-categories">
+                    <div class="checkbox-group">
+                      <label for="publisher1">عصير الكتب للترجمة والنشر</label>
+                      <input type="checkbox" id="publisher1" name="category" value="juice-books">
+                      <br>
+                      <label for="publisher2">كلمات للنشر والتوزيع</label>
+                      <input type="checkbox" id="publisher2" name="category" value="kalemat-publishing">
+                      <br>
+                      <label for="publisher3">بنت الزيات</label>
+              
+                      <input type="checkbox" id="publisher3" name="category" value="bint-azayt">
+                    </div>
+                  </div>
+                  </div>
               </div>
+            </div>
             </div>
           </nav>
     </div>
     <div class="bodyContainer">
         <div class="filter-section"> 
+          <h2>تصفية</h2>
+          <hr>
     <!-- Sorting -->
         <div class="filter-group">
-        <label class="sort" for="sort">ترتيب حسب</label>
+        <h4 >ترتيب حسب</h4>
         <select id="sort">
             <option value="latest">الأحدث</option>
             <option value="oldest">الأقدم</option>
             <option value="popular">الأكثر شعبية</option>
         </select>
         </div>
+        <hr>
 
     <!-- Categories -->
     <div class="filter-group">
-      <label>الأقسام</label>
+      <h4>الأقسام</h4>
       <input type="text" placeholder="ابحث عن الأقسام" id="search-categories">
       <div class="checkbox-group">
-        <!-- <input type="checkbox" id="category1" name="category" value="allBooks">
-        <label for="category1">كتب متنوعة</label><br> -->
-        <input type="checkbox" id="category2" name="category" value="fantasy">
-        <label for="category2">خيال</label><br>
-        <input type="checkbox" id="category3" name="category" value="adventure">
-        <label for="category3">مغامرات</label><br>
-        <input type="checkbox" id="category4" name="category" value="religion">
-        <label for="category3">كتب دينية</label><br>
-        <input type="checkbox" id="category5" name="category" value="classics">
-        <label for="category3">كلاسكيات</label><br>
-        <input type="checkbox" id="category6" name="category" value="romance">
-        <label for="category3">رومانسى</label><br>
-      </div><br>
-    <div class="filter-group">
-        <label class="sort" for="sort">عرض المزيد</label>
-        <select id="sort">
-          <option value="latest">تارخ</option>
-          <option value="oldest">فن</option>
-          <option value="popular">رويات رومانسيه</option>
-          <option value="latest">ادب</option>
-          <option value="oldest">فانتازيا</option>
-          <option value="popular">رويات بوليسيه</option>
-          <option value="latest">كتب اطفال</option>
-          <option value="oldest">مذكرات</option>
-          <option value="popular">رويات خياليه</option>
-          <option value="latest">سيره ذاتيه</option>
-          <option value="oldest">دول وقارات</option>
-          <option value="popular">تاريخ معاصر</option>
-          <option value="popular">كتب دينيه</option>
-        </select>
+        <label for="category2">خيال</label>
+        <input type="checkbox" id="category2" name="category" value="fantasy"><br>
+        <label for="category3">مغامرات</label>
+        <input type="checkbox" id="category3" name="category" value="adventure"><br>
+        <label for="category3">كتب دينية</label>
+        <input type="checkbox" id="category4" name="category" value="religion"><br>
+        <label for="category3">كلاسكيات</label>
+        <input type="checkbox" id="category5" name="category" value="classics"><br>
+        <label for="category3">رومانسى</label>
+        <input type="checkbox" id="category6" name="category" value="romance"><br>
+      </div>
     </div>
-    </div>
+    <hr>
+
     <!-- Publishers -->
     <div class="filter-group">
       <label>دور النشر</label>
-      <input type="text" placeholder="ابحث عن دور النشر" id="search-publishers">
+      <input type="text" placeholder="ابحث عن الأقسام" id="search-categories">
       <div class="checkbox-group">
-        <input type="checkbox" id="publisher1" name="publisher" value="juice-books">
-        <label for="publisher1">عصير الكتب للترجمة والنشر (702)</label>
+        <label for="publisher1">عصير الكتب للترجمة والنشر</label>
+        <input type="checkbox" id="publisher1" name="category" value="juice-books">
         <br>
-        <input type="checkbox" id="publisher2" name="publisher" value="kalemat-publishing">
-        <label for="publisher2">كلمات للنشر والتوزيع (350)</label>
+        <label for="publisher2">كلمات للنشر والتوزيع</label>
+        <input type="checkbox" id="publisher2" name="category" value="kalemat-publishing">
         <br>
-        <input type="checkbox" id="publisher3" name="publisher" value="bint-azayt">
-        <label for="publisher3">بنت الزيات (180)</label>
+        <label for="publisher3">بنت الزيات</label>
+
+        <input type="checkbox" id="publisher3" name="category" value="bint-azayt">
       </div>
     </div>
         </div>
         <div class="cards-container" id="cards-container">
-                <div class="card haveHover" genre="allBooks , religion">
+                <div class="card haveHover" genre="allBooks , religion, juice-books">
                         <div class="card-img">
                         <img src="index 1/files/pages/2024-10-02 at 09.15.09.jpeg" alt="Book Cover" class="bookImg">
                         </div>
                         <div class="card-info">
-                            <h2>اسلام جمال</h2>
-                            <p class="bookTitle">فاتتني صلاه</p>
+                            <h2 class="bookTitle"> فاتتني صلاه </h2>
+                            <p> اسلام جمال</p>
                             <div class="icons">
                                 <div class="rating">
                                     <input type="number" name="rating" hidden >
@@ -214,17 +196,17 @@
                             </div>
                             <div class="buttons">
                               <a href="index 1/index.html" target="_blank"><button class="btn-details">اقراء الان</button></a>
-                                <button class="btn-buy buy" id="book1">اشتري الآن</button>
+                                <button class="btn-buy buy" id="book1">اشتري الآن <i class="fa-solid fa-cart-plus"></i></button>
                             </div>
                         </div>
                 </div>
-                <div class="card haveHover" genre="allBooks , classics , fantasy">
+                <div class="card haveHover" genre="allBooks , classics , fantasy, juice-books">
                     <div class="card-img">
                       <img src="index2/files/pages/cover.jpg" alt="Book Cover" class="bookImg">
                     </div>
                     <div class="card-info">
-                        <h2>رضوي عاشور</h2>
-                        <p class="bookTitle">ثلاثيه غرناطه</p>
+                        <h2 class="bookTitle">ثلاثيه غرناطه</h2>
+                        <p> رضوي عاشور </p>
                         <div class="icons">
                             <div class="rating">
                                 <input type="number" name="rating" hidden>
@@ -238,17 +220,17 @@
                         </div>
                         <div class="buttons">
                           <a href="index2/index2.html" target="_blank"><button class="btn-details">اقراء الان </button></a>
-                            <button class="btn-buy buy" id="book2">اشتري الآن</button>
+                            <button class="btn-buy buy" id="book2">اشتري الآن <i class="fa-solid fa-cart-plus"></i></button>
                         </div>
                     </div>
                 </div>
-                <div class="card haveHover" genre="allBooks , romance">
+                <div class="card haveHover" genre="allBooks , romance, bint-azayt">
                     <div class="card-img">
                         <img src="index3/files/pages/cover.jpg" alt="Book Cover" class="bookImg">
                     </div>
                     <div class="card-info">
-                        <h2>خوله حمدي</h2>
-                        <p class="bookTitle">في قلبي انثي عبريه</p>
+                        <h2 class="bookTitle">في قلبي انثي عبريه</h2>
+                        <p>خوله حمدي </p>
                         <div class="icons">
                             <div class="rating">
                                 <input type="number" name="rating" hidden>
@@ -262,17 +244,17 @@
                         </div>
                         <div class="buttons">
                           <a href="index3/index3.html" target="_blank"><button class="btn-details">اقراء الان</button></a>
-                            <button class=" btn-buy buy" id="book3">اشتري الآن</button>
+                            <button class=" btn-buy buy" id="book3">اشتري الآن <i class="fa-solid fa-cart-plus"></i></button>
                         </div>
                     </div>  
                 </div>
-                <div class="card haveHover" genre="allBooks , fantasy , adventure , romance">
+                <div class="card haveHover" genre="allBooks , fantasy , adventure , romance, kalemat-publishing">
                   <div class="card-img">
                       <img src="pic/16a7765ab806ff3ac3be0256c85443fe.jpg" alt="Book Cover" class="bookImg">
                   </div>
                   <div class="card-info">
-                      <h2>حنان لاشين</h2>
-                      <p class="bookTitle">امانوس</p>
+                      <h2 class="bookTitle"> امانوس  </h2>
+                      <p>حنان لاشين</p>
                       <div class="icons">
                           <div class="rating">
                               <input type="number" name="rating" hidden>
@@ -286,7 +268,7 @@
                       </div>
                       <div class="buttons">
                         <button class="btn-details showDescription">الوصف</button>
-                        <button class=" btn-buy buy" id="book4">اشتري الآن</button>
+                        <button class=" btn-buy buy" id="book4">اشتري الآن <i class="fa-solid fa-cart-plus"></i></button>
                       </div>
                   </div>
                   <div class="popoverr">
@@ -310,13 +292,13 @@
                     </div>
                 </div>   
                 </div>
-                <div class="card haveHover" genre="">
+                <div class="card haveHover" genre="allBooks,romance,fantasy, bint-azayt">
                   <div class="card-img">
                       <img src="pic/8238425c426a3f9287e9bef224acaff4.jpg" alt="Book Cover" class="bookImg">
                   </div>
                     <div class="card-info">
-                        <h2>مني سلامه</h2>
-                        <p class="bookTitle">القصر الاسود</p>
+                        <h2 class="bookTitle">القصر الاسود</h2>
+                        <p>مني سلامه </p>
                         <div class="icons">
                             <div class="rating">
                                 <input type="number" name="rating" hidden>
@@ -330,7 +312,7 @@
                         </div>
                         <div class="buttons">
                           <button class="btn-details showDescription" >الوصف</button>
-                          <button class="btn-buy buy" id="book5">اشتري الآن</button>
+                          <button class="btn-buy buy" id="book5">اشتري الآن <i class="fa-solid fa-cart-plus"></i></button>
                         </div>
                     </div>
                     <div class="popoverr">
@@ -352,13 +334,13 @@
                       </div>
                   </div>   
                 </div>
-                <div class="card haveHover" genre="">
+                <div class="card haveHover" genre="allBooks,romance,fantasy, kalemat-publishing">
                   <div class="card-img">
                       <img src="pic/325afa23701e724474b202593736145c.jpg" alt="Book Cover" class="bookImg">
                   </div>
                   <div class="card-info">
-                      <h2>احمد ال حمدان</h2>
-                      <p class="bookTitle">ابابيل</p>
+                      <h2 class="bookTitle">ابابيل</h2>
+                      <p>احمد ال حمدان </p>
                       <div class="icons">
                           <div class="rating">
                               <input type="number" name="rating" hidden>
@@ -372,7 +354,7 @@
                       </div>
                       <div class="buttons">
                         <button class="btn-details showDescription" >الوصف</button>
-                          <button class="btn-buy buy" id="book6">اشتري الآن</button>
+                          <button class="btn-buy buy" id="book6">اشتري الآن <i class="fa-solid fa-cart-plus"></i></button>
                       </div>
                   </div>
                   <div class="popoverr">
