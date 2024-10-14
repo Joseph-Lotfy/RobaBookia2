@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Search</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link href="CSS/new readBook.css" rel="stylesheet">
+    <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
+    <link href="jquery.ui.html4.css" rel="stylesheet">
+    <link href="jquery.ui.css" rel="stylesheet">
+    <link href="docs.css" rel="stylesheet">
+    <link rel="stylesheet" href="CSS/readBook.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" integrity="sha384-tViUnnbYAV00FLIhhi3v/dWt3Jxw4gZQcNoSCxCIFNJVCx7/D55/wXsrNIRANwdD" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="CSS/style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" integrity="sha384-tViUnnbYAV00FLIhhi3v/dWt3Jxw4gZQcNoSCxCIFNJVCx7/D55/wXsrNIRANwdD" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="CSS/nav-bar.css">
+    <style id="internal-style"></style>
+</head>
+<body>
+    
+    <div id="main-content">
+        <header>
+          <div class="navbar">
+            <div class="menu-icon" onclick="toggleMenu(); rotateIcon();">
+              <span></span>
+              <span></span>
+            </div>
+            <div class="navbar-title">RobaBookia</div>
+            <div class="info-icon">
+                <div class="cart" id="cart">
+                    <i class="bi bi-cart"></i>
+                    <div class="num" id="num">0</div>
+                    <div class="purchases" id="purchases">
+                        <div class="allPurchasedItems" id="allPurchasedItems"></div>
+                        <a href="checkout.html" onclick="store()" class="checkout">CheckOut</a>
+                    </div>
+                </div>
+            </div>
+          </div>
+          <!-- Dropdown Menu (Initially Hidden) -->
+          <div class="menu" id="dropdownMenu">
+            <a href="#">Welcome</a>
+            <a href="#">Blueprint</a>
+            <a href="#">Reference Index</a>
+            <a href="#">Interview Series</a>
+            <a href="#">Rhizome's 7x7 2024</a>
+            <a href="#">About Us</a>
+            <a class="nobord" href="#">Contact Us</a>
+          </div>
+        </header>
+    </div>
+
+    <div class="line">
+        <i class="bi bi-house-door-fill mobileHide"></i>
+        <svg xmlns="http://www.w3.org/2000/svg" class="flex-shrink-0 w-6 h-full text-gray-200 mobileHide" viewBox="-23 0 23 44" fill="currentColor" preserveAspectRatio="none" aria-hidden="true">
+            <path d="M -1 0 l -22 22 l 22 22 h 1 l -22 -22 l 22 -22 H -1 z"></path>
+        </svg>
+        <!-- <i class="fa-solid fa-angle-right --fa-font-light"></i> -->
+        <p>كتب عربى</p>
+        <nav class="navbar">
+            <div class="container-fluid" style="padding-right: 0 !important;">
+              <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
+                <span>تصفية <i class="fa-solid fa-filter"></i></span>
+              </button>
+              <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+                <div class="offcanvas-header">
+                  <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Filter</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                </div>
+                <div class="offcanvas-body">
+                  <div class="filter-section2">                 
+                    <!-- Categories -->
+                    <div class="filter-group">
+                      <label>الأقسام</label>
+                      <input type="text" placeholder="ابحث عن الأقسام" id="search-categories">
+                      <div class="checkbox-group">
+                        <input type="checkbox" id="category2" name="category" value="fantasy">
+                        <label for="category2">خيال</label><br>
+                        <input type="checkbox" id="category3" name="category" value="adventure">
+                        <label for="category3">مغامرات</label><br>
+                        <input type="checkbox" id="category4" name="category" value="religion">
+                        <label for="category3">كتب دينية</label><br>
+                        <input type="checkbox" id="category5" name="category" value="classics">
+                        <label for="category3">كلاسكيات</label><br>
+                        <input type="checkbox" id="category6" name="category" value="romance">
+                        <label for="category3">رومانسى</label><br>
+                      </div><br>
+                    <div class="filter-group">
+                        <label class="sort" for="sort">عرض المزيد</label>
+                        <select id="sort">
+                          <option value="latest">تارخ</option>
+                          <option value="oldest">فن</option>
+                          <option value="popular">رويات رومانسيه</option>
+                          <option value="latest">ادب</option>
+                          <option value="oldest">فانتازيا</option>
+                          <option value="popular">رويات بوليسيه</option>
+                          <option value="latest">كتب اطفال</option>
+                          <option value="oldest">مذكرات</option>
+                          <option value="popular">رويات خياليه</option>
+                          <option value="latest">سيره ذاتيه</option>
+                          <option value="oldest">دول وقارات</option>
+                          <option value="popular">تاريخ معاصر</option>
+                          <option value="popular">كتب دينيه</option>
+                        </select>
+                    </div>
+                    </div>
+                    <!-- Publishers -->
+                    <div class="filter-group">
+                      <label>دور النشر</label>
+                      <input type="text" placeholder="ابحث عن دور النشر" id="search-publishers">
+                      <div class="checkbox-group">
+                        <input type="checkbox" id="publisher1" name="publisher" value="juice-books">
+                        <label for="publisher1">عصير الكتب للترجمة والنشر (702)</label>
+                        <br>
+                        <input type="checkbox" id="publisher2" name="publisher" value="kalemat-publishing">
+                        <label for="publisher2">كلمات للنشر والتوزيع (350)</label>
+                        <br>
+                        <input type="checkbox" id="publisher3" name="publisher" value="bint-azayt">
+                        <label for="publisher3">بنت الزيات (180)</label>
+                      </div>
+                    </div>
+                        </div>
+                </div>
+              </div>
+            </div>
+          </nav>
+    </div>
+    <div class="bodyContainer">
+        <div class="filter-section"> 
+    <!-- Sorting -->
+        <div class="filter-group">
+        <label class="sort" for="sort">ترتيب حسب</label>
+        <select id="sort">
+            <option value="latest">الأحدث</option>
+            <option value="oldest">الأقدم</option>
+            <option value="popular">الأكثر شعبية</option>
+        </select>
+        </div>
+
+    <!-- Categories -->
+    <div class="filter-group">
+      <label>الأقسام</label>
+      <input type="text" placeholder="ابحث عن الأقسام" id="search-categories">
+      <div class="checkbox-group">
+        <!-- <input type="checkbox" id="category1" name="category" value="allBooks">
+        <label for="category1">كتب متنوعة</label><br> -->
+        <input type="checkbox" id="category2" name="category" value="fantasy">
+        <label for="category2">خيال</label><br>
+        <input type="checkbox" id="category3" name="category" value="adventure">
+        <label for="category3">مغامرات</label><br>
+        <input type="checkbox" id="category4" name="category" value="religion">
+        <label for="category3">كتب دينية</label><br>
+        <input type="checkbox" id="category5" name="category" value="classics">
+        <label for="category3">كلاسكيات</label><br>
+        <input type="checkbox" id="category6" name="category" value="romance">
+        <label for="category3">رومانسى</label><br>
+      </div><br>
+    <div class="filter-group">
+        <label class="sort" for="sort">عرض المزيد</label>
+        <select id="sort">
+          <option value="latest">تارخ</option>
+          <option value="oldest">فن</option>
+          <option value="popular">رويات رومانسيه</option>
+          <option value="latest">ادب</option>
+          <option value="oldest">فانتازيا</option>
+          <option value="popular">رويات بوليسيه</option>
+          <option value="latest">كتب اطفال</option>
+          <option value="oldest">مذكرات</option>
+          <option value="popular">رويات خياليه</option>
+          <option value="latest">سيره ذاتيه</option>
+          <option value="oldest">دول وقارات</option>
+          <option value="popular">تاريخ معاصر</option>
+          <option value="popular">كتب دينيه</option>
+        </select>
+    </div>
+    </div>
+    <!-- Publishers -->
+    <div class="filter-group">
+      <label>دور النشر</label>
+      <input type="text" placeholder="ابحث عن دور النشر" id="search-publishers">
+      <div class="checkbox-group">
+        <input type="checkbox" id="publisher1" name="publisher" value="juice-books">
+        <label for="publisher1">عصير الكتب للترجمة والنشر (702)</label>
+        <br>
+        <input type="checkbox" id="publisher2" name="publisher" value="kalemat-publishing">
+        <label for="publisher2">كلمات للنشر والتوزيع (350)</label>
+        <br>
+        <input type="checkbox" id="publisher3" name="publisher" value="bint-azayt">
+        <label for="publisher3">بنت الزيات (180)</label>
+      </div>
+    </div>
+        </div>
+        <div class="cards-container" id="cards-container">
+                <div class="card haveHover" genre="allBooks , religion">
+                        <div class="card-img">
+                        <img src="index 1/files/pages/2024-10-02 at 09.15.09.jpeg" alt="Book Cover" class="bookImg">
+                        </div>
+                        <div class="card-info">
+                            <h2>اسلام جمال</h2>
+                            <p class="bookTitle">فاتتني صلاه</p>
+                            <div class="icons">
+                                <div class="rating">
+                                    <input type="number" name="rating" hidden >
+                                    <i class='bx bx-star star' style="--i: 0;"></i>
+                                    <i class='bx bx-star star' style="--i: 1;"></i>
+                                    <i class='bx bx-star star' style="--i: 2;"></i>
+                                    <i class='bx bx-star star' style="--i: 3;"></i>
+                                    <i class='bx bx-star star' style="--i: 4;"></i>
+                                </div>
+                                <p class="p3 price">25$ </p>
+                            </div>
+                            <div class="buttons">
+                              <a href="index 1/index.html" target="_blank"><button class="btn-details">اقراء الان</button></a>
+                                <button class="btn-buy buy" id="book1">اشتري الآن</button>
+                            </div>
+                        </div>
+                </div>
+                <div class="card haveHover" genre="allBooks , classics , fantasy">
+                    <div class="card-img">
+                      <img src="index2/files/pages/cover.jpg" alt="Book Cover" class="bookImg">
+                    </div>
+                    <div class="card-info">
+                        <h2>رضوي عاشور</h2>
+                        <p class="bookTitle">ثلاثيه غرناطه</p>
+                        <div class="icons">
+                            <div class="rating">
+                                <input type="number" name="rating" hidden>
+                                <i class='bx bx-star star' style="--i: 0;"></i>
+                                <i class='bx bx-star star'   style="--i: 1;"></i>
+                                <i class='bx bx-star star'   style="--i: 2;"></i>
+                                <i class='bx bx-star star'   style="--i: 3;"></i>
+                                <i class='bx bx-star star'   style="--i: 4;"></i>
+                            </div>
+                            <p class="p3 price" >56$ </p>
+                        </div>
+                        <div class="buttons">
+                          <a href="index2/index2.html" target="_blank"><button class="btn-details">اقراء الان </button></a>
+                            <button class="btn-buy buy" id="book2">اشتري الآن</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="card haveHover" genre="allBooks , romance">
+                    <div class="card-img">
+                        <img src="index3/files/pages/cover.jpg" alt="Book Cover" class="bookImg">
+                    </div>
+                    <div class="card-info">
+                        <h2>خوله حمدي</h2>
+                        <p class="bookTitle">في قلبي انثي عبريه</p>
+                        <div class="icons">
+                            <div class="rating">
+                                <input type="number" name="rating" hidden>
+                                <i class='bx bx-star star'   style="--i: 0;"></i>
+                                <i class='bx bx-star star'   style="--i: 1;"></i>
+                                <i class='bx bx-star star'   style="--i: 2;"></i>
+                                <i class='bx bx-star star'   style="--i: 3;"></i>
+                                <i class='bx bx-star star'   style="--i: 4;"></i>
+                            </div>
+                            <p class="p3 price">85$ </p>
+                        </div>
+                        <div class="buttons">
+                          <a href="index3/index3.html" target="_blank"><button class="btn-details">اقراء الان</button></a>
+                            <button class=" btn-buy buy" id="book3">اشتري الآن</button>
+                        </div>
+                    </div>  
+                </div>
+                <div class="card haveHover" genre="allBooks , fantasy , adventure , romance">
+                  <div class="card-img">
+                      <img src="pic/16a7765ab806ff3ac3be0256c85443fe.jpg" alt="Book Cover" class="bookImg">
+                  </div>
+                  <div class="card-info">
+                      <h2>حنان لاشين</h2>
+                      <p class="bookTitle">امانوس</p>
+                      <div class="icons">
+                          <div class="rating">
+                              <input type="number" name="rating" hidden>
+                              <i class='bx bx-star star'   style="--i: 0;"></i>
+                              <i class='bx bx-star star'   style="--i: 1;"></i>
+                              <i class='bx bx-star star'   style="--i: 2;"></i>
+                              <i class='bx bx-star star'   style="--i: 3;"></i>
+                              <i class='bx bx-star star'   style="--i: 4;"></i>
+                          </div>
+                          <p class="p3 price">29$ </p>
+                      </div>
+                      <div class="buttons">
+                        <button class="btn-details showDescription">الوصف</button>
+                        <button class=" btn-buy buy" id="book4">اشتري الآن</button>
+                      </div>
+                  </div>
+                  <div class="popoverr">
+                    <div class="descriptionBox">
+                        <button class="hideDescription">x</button>
+                        <div class="descriptionBookDetails">
+                            <img class="descriptionImage" src="pic/16a7765ab806ff3ac3be0256c85443fe.jpg" alt="Cover of ${title}">
+                            <div>
+                                    <div>
+                                        <h3>
+                                          امانوس
+                                        </h3>
+                                        <p class="descName">حنان لاشين</p>
+                                    </div>
+                                <p class="descText">"إن كُنت تتابع معنا سلسلة مملكة البلاغة ووصلت للجزء الثالث فحتمًا أنت مُحارب، أكاد أنظر إلى عينيك وأنت تقرأ كلماتي، أرى الشّغف والشوق إلى مغامرة جديدة يطلّ منهما، فمرحبًا بك. ما زالت مملكة البلاغة تستدعي المحاربين للدفاع عن الكتب، وعن القيم، وعن طُهر الكلمات التي دوّنت بين دفّتي تلك الكتب، والمحاربون يتهيئون هنا وهناك، وفي لحظة فارقة، وفجأة، سيظهر لك الرّمز كما ظهر لغيرك، وستدور الكُتب حولك في الهواء، وسترى صورتك في كتاب خلت صفحاته من الكلمات، سيقشعرّ بدنك، وستتسارع دقّات قلبك، وستركض نحو أبيك أو جدّك وأنت تحمل الكتاب الذي قام باختيارك، أنت بالذّات، وسيزورك صقر مهيب يخفق بجناحيه ليحملك إلى هناك، ستفاجأ أنّه يُحدّثك بلغة البشر، فلا تقلق عندما يصعد فوق رأسك، ولا تجزع عندما يغطي عينيك بريش جناحيه، فقد حان الوقت، وسترحل إلى "مملكة البلاغة"، حيث الضباب يلف كلّ شيء هناك، ستشعر دائمًا بالبرودة، الطيور هناك يغطيها ريشٌ غريب الشكل واللون، ستجدها أكبر حجمًا مما هي عليه هنا، الأشخاص غريبو الأطوار والهيئة والملابس، وكأنّ كلَّ مجموعةٍ منهم أتت من حقبة زمنية مختلفة، وهناك من جمعهم فجأة من أزمنتهم أو استدعاهم لمهمة ما، كما ستنتقل أنت إلى هناك، فهل أنت مستعد؟ أطلق لخيالك العنان، وحلّق معنا في رحاب تلك المملكة العجيبة، ودعني أكشف لك أسرارًا أخرى عن عوالمها التي تضجّ بالمغامرات، ولكن قبل أن نبدأ، دعني أُحذِّرك، عندما تقتني كتابًا عتيقًا أوراقه مصفرّة وباهتة، لا تُردد الطلاسم المنقوشة بالحبر الأحمر على هوامشه أبدًا، وخاصّة إن كُنت وحدك!".</p>
+                                <a href="https://openlibrary.org/works/OL893415W/Dune" target="_blank">
+                                    <button type="button" class="moreDetails btn-secondary" class="moreDetails">See more Details</button>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>   
+                </div>
+                <div class="card haveHover" genre="">
+                  <div class="card-img">
+                      <img src="pic/8238425c426a3f9287e9bef224acaff4.jpg" alt="Book Cover" class="bookImg">
+                  </div>
+                    <div class="card-info">
+                        <h2>مني سلامه</h2>
+                        <p class="bookTitle">القصر الاسود</p>
+                        <div class="icons">
+                            <div class="rating">
+                                <input type="number" name="rating" hidden>
+                                <i class='bx bx-star star'   style="--i: 0;"></i>
+                                <i class='bx bx-star star'   style="--i: 1;"></i>
+                                <i class='bx bx-star star'   style="--i: 2;"></i>
+                                <i class='bx bx-star star'   style="--i: 3;"></i>
+                                <i class='bx bx-star star'   style="--i: 4;"></i>
+                            </div>
+                            <p class="p3 price">125$ </p>
+                        </div>
+                        <div class="buttons">
+                          <button class="btn-details showDescription" >الوصف</button>
+                          <button class="btn-buy buy" id="book5">اشتري الآن</button>
+                        </div>
+                    </div>
+                    <div class="popoverr">
+                      <div class="descriptionBox">
+                          <button class="hideDescription">x</button>
+                          <div class="descriptionBookDetails">
+                              <img class="descriptionImage" src="pic/8238425c426a3f9287e9bef224acaff4.jpg" alt="Cover of ${title}">
+                              <div>
+                                      <div>
+                                          <h3>القصر الاسود</h3>
+                                          <p class="descName">مني سلامه</p>
+                                      </div>
+                                  <p class="descText">رواية القصر الأسود بقلم منى سلامة .. اشتَهَتْ أن تكون سيدة القصر المَهيب المُحاط بحديقـة غَنَّـاء؛ أزهـار وأشجار وأثمار تسر الناظرين، غير مُدركة لظلال الماضي الأليم التي تَجثم بثقلها فوقه، ولا أطياف الحُب التي تُحاول أن تتسَوَّر مِحراب قلبها بغفلةٍ منها. فهل ستخرج مِن القصر بنفس الأحلام التي دخلتهُ بها، أم ستعجِنها التجربة بماءِ الندم؟</p>
+                                  <a href="https://openlibrary.org/works/OL893415W/Dune" target="_blank">
+                                      <button type="button" class="moreDetails btn-secondary" class="moreDetails">See more Details</button>
+                                  </a>
+                              </div>
+                          </div>
+                      </div>
+                  </div>   
+                </div>
+                <div class="card haveHover" genre="">
+                  <div class="card-img">
+                      <img src="pic/325afa23701e724474b202593736145c.jpg" alt="Book Cover" class="bookImg">
+                  </div>
+                  <div class="card-info">
+                      <h2>احمد ال حمدان</h2>
+                      <p class="bookTitle">ابابيل</p>
+                      <div class="icons">
+                          <div class="rating">
+                              <input type="number" name="rating" hidden>
+                              <i class='bx bx-star star'   style="--i: 0;"></i>
+                              <i class='bx bx-star star'   style="--i: 1;"></i>
+                              <i class='bx bx-star star'   style="--i: 2;"></i>
+                              <i class='bx bx-star star'   style="--i: 3;"></i>
+                              <i class='bx bx-star star'   style="--i: 4;"></i>
+                          </div>
+                          <p class="p3 price">55$ </p>
+                      </div>
+                      <div class="buttons">
+                        <button class="btn-details showDescription" >الوصف</button>
+                          <button class="btn-buy buy" id="book6">اشتري الآن</button>
+                      </div>
+                  </div>
+                  <div class="popoverr">
+                    <div class="descriptionBox">
+                        <button class="hideDescription">x</button>
+                        <div class="descriptionBookDetails">
+                            <img class="descriptionImage" src="pic/325afa23701e724474b202593736145c.jpg" alt="Cover of ${title}">
+                            <div>
+                                    <div>
+                                        <h3>ابابيل</h3>
+                                        <p class="descName">احمد ال حمدان</p>
+                                    </div>
+                                <p class="descText">تحكي الرواية عن الجنية جُمانة التي تزوجت بالإنسي بحر رغمًا عن أنف عشيرتها من الجن، مندفعةً بعاطفة الحُب مغيبةً العقل والتأني، فيُثمر هذا الزواج طفلًا صغيرًا يحمل بداخله قوة النار التي تنتظر من يحركها بخبرته العتيقة، ولكن جُمانة تعاني الأمرين من هذا الزواج فزوجها يعمل لدى منظمةٍ إجرامية تُخالف المبادئ التي تؤمن بها عائلتها، ويبدو أن سيطرة هذه المنظمة على زوجها لا فكاك منها، فيتم تهديده بأن يتم قتل عائلته إن فكر في التمرد</p>
+                                <a href="https://openlibrary.org/works/OL893415W/Dune" target="_blank">
+                                    <button type="button" class="moreDetails btn-secondary" class="moreDetails">See more Details</button>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>   
+                </div>
+        </div>
+    </div>
+
+    <script src="Js/readBook.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script src="myJS/gsap.min.js"></script>
+    <script src="myJS/script.js"></script>
+    <script>
+      const allCards = document.querySelectorAll('.card');
+
+allCards.forEach(card => {
+  // For each card, find its stars and rating input
+  const allStar = card.querySelectorAll('.rating .star');
+  const ratingValue = card.querySelector('.rating input');
+
+  allStar.forEach((item, idx) => {
+    item.addEventListener('click', function () {
+      let click = 0;
+      ratingValue.value = idx + 1;
+
+      // Reset all stars in this card only
+      allStar.forEach(i => {
+        i.classList.replace('bxs-star', 'bx-star');
+        i.classList.remove('active');
+      });
+
+      // Set active stars in this card only
+      for (let i = 0; i < allStar.length; i++) {
+        if (i <= idx) {
+          allStar[i].classList.replace('bx-star', 'bxs-star');
+          allStar[i].classList.add('active');
+        } else {
+          allStar[i].style.setProperty('--i', click);
+          click++;
+        }
+      }
+    });
+  });
+});
+    </script>
+</body>
+</html>
